@@ -18,8 +18,9 @@ class CorsSettings(BaseModel):
         env_prefix = 'CORS_'
 
 class DatabaseSettings(BaseModel):
-    url: PostgresDsn = Field(default="postgresql://user:password@localhost:5432/defaultdb")
-    pool_size: int = 5
+    dsn: PostgresDsn = Field(default="postgresql://user:password@localhost:5432/defaultdb")
+    max_size: int = Field(default=64)
+    min_size: int = Field(default=5)
     class Config:
         env_prefix = 'DATABASE_'
 
