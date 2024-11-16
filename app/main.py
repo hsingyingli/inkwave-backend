@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from config.lifespan import lifespan
 from config.application import get_settings
+from app.routes.router import router
 
 settings = get_settings()
 
@@ -15,4 +17,6 @@ app.add_middleware(
     allow_headers=settings.cors.allow_headers,
 )
 
-# app.include_router(router, prefix="/api")
+app.include_router(router, prefix="/api")
+app.add_exception_handler(Exception, lambda _request, _exc: JSONResponse(status_code=500, content={"message": "server error"}))
+
