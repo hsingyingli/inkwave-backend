@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "inkwave-backend"
+version = "0.1.0"
+description = ""
+authors = ["hsingyingli <xingyingli855@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.115.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
